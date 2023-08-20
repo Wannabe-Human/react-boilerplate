@@ -1,11 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RootLayout } from './layouts/RootLayout';
+import { RootErrorBoundary } from './errorboundary/RootErrorBoundary';
 
 export const App = () => {
 
   const router = createBrowserRouter([
     {
       element: <RootLayout />,
+      errorElement: <RootErrorBoundary />,
       children: [
         {
           path: "/",
@@ -17,11 +19,12 @@ export const App = () => {
           ),
         },
         {
-          path: "about",
+          path: "/about",
           element: (
             <div>
               <h1>About</h1>
               <a href="/"> 메인 이동</a>
+              <a href="/error"> 에러 이동</a>
             </div>
           ),
         },
