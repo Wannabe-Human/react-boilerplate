@@ -1,9 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-function App() {
+export const App = () => {
 
   const router = createBrowserRouter([
     {
@@ -24,5 +22,3 @@ function App() {
     <RouterProvider router={router} />
   );
 }
-
-export default App;
