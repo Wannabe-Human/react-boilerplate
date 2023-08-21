@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { RootLayout } from './layouts/RootLayout';
+import { RootLayout } from '@layouts/RootLayout';
 import { RootErrorBoundary } from './errorboundary/RootErrorBoundary';
 
 export const App = () => {
@@ -13,7 +13,7 @@ export const App = () => {
           index : true, // children 중 최우선 순위
           element: (
             <div>
-              <h1>Hello World</h1>
+              <h1 className='text-3xl font-bold'>Hello World</h1>
               <a href="./about">어바웃 이동</a>
             </div>
           ),
@@ -22,7 +22,7 @@ export const App = () => {
           path: "/about",
           element: (
             <div>
-              <h1>About</h1>
+              <h1 className='my-cus hello'>About</h1>
               <a href="/"> 메인 이동</a>
               <a href="/error"> 에러 이동</a>
             </div>
