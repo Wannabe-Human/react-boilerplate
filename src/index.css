@@ -41,4 +41,8 @@
     font-style: normal;
     src: url("@assets/fonts/NotoSansKR/NotoSansKR-Black.otf") format("opentype");
   }
+
+  * {
+    @apply font-NotoSansKr;
+  }
 }
