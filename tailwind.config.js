@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-import './src/plugins/tailwind/cssAsPlugin'; //css 파일을 tailwind plugins 로 변환하는 모듈
-import CustomCSS from './src/plugins/tailwind/custom.css';
+require('./src/plugins/tailwind/cssAsPlugin'); //css 파일을 tailwind plugins 로 변환하는 모듈
+const CustomCSS = require('./src/plugins/tailwind/custom.css');
 
 module.exports = {
   content: [

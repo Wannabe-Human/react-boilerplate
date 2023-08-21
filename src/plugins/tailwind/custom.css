@@ -1,9 +1,2 @@
 @layer components {
-  .my-custom-styl {
-    @apply lg:text-red-700;
-  }
-
-  .hello {
-    @apply font-sans text-blue-600;
-  }
 }

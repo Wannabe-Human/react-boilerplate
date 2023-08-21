@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RootLayout } from '@layouts/RootLayout';
-import { RootErrorBoundary } from './errorboundary/RootErrorBoundary';
+import { RootErrorBoundary } from '@/errorboundary/RootErrorBoundary';
 
 export const App = () => {
 

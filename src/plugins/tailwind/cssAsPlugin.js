@@ -1,6 +1,6 @@
-import { parse } from "postcss";
-import { objectify } from "postcss-js";
-import { readFileSync } from "fs";
+const { parse } = require("postcss");
+const { objectify } = require("postcss-js");
+const { readFileSync } = require("fs");
 
 require.extensions['.css'] = function (module, filename) {
 	module.exports = ({ addBase, addComponents, addUtilities }) => {
