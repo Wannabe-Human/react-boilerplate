@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 require('./src/plugins/tailwind/cssAsPlugin'); //css 파일을 tailwind plugins 로 변환하는 모듈, vscode 자동완성을 위해 적용하였다
 const CustomCSS = require('./src/plugins/tailwind/custom.css'); // 추가하려는 custom css, cssAsPlugin 모듈로 인해 플러그인으로 자동 변환된다
+const TailwindCustomTheme = require('./src/plugins/tailwind/theme'); // tailwind 테마
 
 /**
  * 
@@ -29,9 +30,7 @@ module.exports = {
   purge: [ 
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  theme: {
-    extend: {},
-  },
+  theme: TailwindCustomTheme,
   plugins: [
     CustomCSS
   ],
