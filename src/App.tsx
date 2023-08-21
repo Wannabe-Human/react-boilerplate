@@ -10,7 +10,7 @@ export const App = () => {
       errorElement: <RootErrorBoundary />,
       children: [
         {
-          path: "/",
+          index : true, // children 중 최우선 순위
           element: (
             <div>
               <h1>Hello World</h1>
@@ -20,6 +20,19 @@ export const App = () => {
         },
         {
           path: "/about",
+          element: (
+            <div>
+              <h1>About</h1>
+              <a href="/"> 메인 이동</a>
+              <a href="/error"> 에러 이동</a>
+            </div>
+          ),
+        },
+        {
+          path: "/about",
+          loader: async () => {
+            return {}
+          },
           element: (
             <div>
               <h1>About</h1>
