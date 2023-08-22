@@ -1,0 +1,35 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended", 
+    "plugin:@typescript-eslint/recommended", 
+    "plugin:react/recommended", 
+    "plugin:react-hooks/recommended", 
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  // js 파일은 부득이하게, 다른용도로 사용한 경우가 많기 때문에, 적용대상에서 제외한다
+  "ignorePatterns": [
+    "build/", 
+    "dist/", 
+    "node_modules/", 
+    "*.js"
+  ],
+  "plugins": [
+    "react", 
+    "react-hooks", 
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "@typescript-eslint/no-empty-interface": "off",
+    //최상단에 import react 하는 rule 비활성화, react 17 이후부터는 필수가 아니다
+    "react/react-in-jsx-scope": "off" 
+  }
+}

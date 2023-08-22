@@ -1,0 +1,26 @@
+# 아티팩트 무시:
+build
+coverage
+
+# 모든 HTML 파일 무시:
+*.html
+
+# npm 관련 파일 무시:
+**/.git
+**/.github
+**/.svn
+**/.hg
+**/node_modules
+
+# project 환경변수 파일 무시:
+.env
+
+# package json 파일 무시 :
+package.json
+package-lock.json
+
+# setting 파일 무시 :
+.eslintrc.json
+config-overrides.json
+tsconfig.json
+tsconfig.paths.json
