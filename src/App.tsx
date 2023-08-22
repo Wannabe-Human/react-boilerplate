@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ThemeProvider } from '@material-tailwind/react';
 import { RootLayout } from '@layouts/RootLayout';
+import { componentTheme } from '@plugins/material-tailwind/componetTheme';
 import { RootErrorBoundary } from '@/errorboundary/RootErrorBoundary';
 
 export const App = () => {
@@ -13,7 +15,12 @@ export const App = () => {
           element: (
             <div>
               <h1 className='text-3xl font-bold'>Hello World</h1>
-              <a href='./about'>어바웃 이동</a>
+              <a
+                className='btn btn-lg md:btn font-thin sm:rounded-none'
+                href='./about'
+              >
+                어바웃 이동
+              </a>
             </div>
           ),
         },
@@ -44,5 +51,9 @@ export const App = () => {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider value={componentTheme}>
+      <RouterProvider router={router} />;
+    </ThemeProvider>
+  );
 };
