@@ -21,6 +21,7 @@ package-lock.json
 
 # setting 파일 무시 :
 .eslintrc.json
+tailwind.config.js
 config-overrides.json
 tsconfig.json
 tsconfig.paths.json
