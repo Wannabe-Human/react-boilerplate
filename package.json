@@ -43,7 +43,11 @@
   },
   "devDependencies": {
     "customize-cra": "^1.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "postcss-js": "^4.0.1",
+    "prettier": "^3.0.2",
+    "prettier-plugin-tailwindcss": "^0.5.3",
     "react-app-rewired": "^2.2.1",
     "tailwindcss": "^3.3.3"
   }
