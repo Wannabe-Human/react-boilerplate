@@ -28,7 +28,16 @@
     "@typescript-eslint"
   ],
   "rules": {
+
+    //빈값의 interface 미허용 해제
     "@typescript-eslint/no-empty-interface": "off",
+
+    // 연산자 (!) 사용 불가 해제
+    "@typescript-eslint/no-non-null-assertion": "off",
+
+    //any 타입 사용 불가 해제
+    "@typescript-eslint/no-explicit-any": "off",
+
     //최상단에 import react 하는 rule 비활성화, react 17 이후부터는 필수가 아니다
     "react/react-in-jsx-scope": "off" 
   }
