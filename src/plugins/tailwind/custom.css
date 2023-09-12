@@ -1,2 +1,26 @@
 @layer components {
+  .effect-ripple {
+    @apply relative overflow-hidden bg-inherit;
+  }
+  .effect-ripple::after {
+    @apply absolute h-0 w-0;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    content: '';
+    background: radial-gradient(
+      transparent,
+      transparent,
+      var(--effect-color, #fffffff1),
+      var(--effect-color, #fffffff1)
+    );
+  }
+
+  .effect-ripple:active::after {
+    @apply opacity-0 transition-all duration-300 ease-out fill-mode-backwards;
+    width: 200%;
+    padding-top: 200%;
+    margin-top: -100%;
+    margin-left: -100%;
+  }
 }
