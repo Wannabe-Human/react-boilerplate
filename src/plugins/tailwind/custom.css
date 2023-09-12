@@ -24,3 +24,123 @@
     margin-left: -100%;
   }
 }
+
+@layer utilities {
+  .font-thin {
+    font-weight: 100;
+    font-variation-settings: 'wght' 100;
+  }
+  .font-thin strong {
+    font-weight: 300;
+    font-variation-settings: 'wght' 300;
+  }
+  .font-thin.italic {
+    font-variation-settings:
+      'slnt' 1,
+      'wght' 100;
+  }
+  .font-extralight {
+    font-weight: 200;
+    font-variation-settings: 'wght' 200;
+  }
+  .font-extralight strong {
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+  }
+  .font-extralight.italic {
+    font-variation-settings:
+      'slnt' 1,
+      'wght' 200;
+  }
+  .font-light {
+    font-weight: 300;
+    font-variation-settings: 'wght' 300;
+  }
+  .font-light strong {
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+  }
+  .font-light.italic {
+    font-variation-settings:
+      'slnt' 1,
+      'wght' 300;
+  }
+  .font-normal {
+    font-weight: 400;
+    font-variation-settings: 'wght' 400;
+  }
+  .font-normal strong {
+    font-weight: 600;
+    font-variation-settings: 'wght' 600;
+  }
+  .font-normal.italic {
+    font-variation-settings:
+      'slnt' 1,
+      'wght' 400;
+  }
+  .font-medium {
+    font-weight: 500;
+    font-variation-settings: 'wght' 500;
+  }
+  .font-medium strong {
+    font-weight: 700;
+    font-variation-settings: 'wght' 700;
+  }
+  .font-medium.italic {
+    font-variation-settings:
+      'slnt' 1,
+      'wght' 500;
+  }
+  .font-semibold {
+    font-weight: 600;
+    font-variation-settings: 'wght' 600;
+  }
+  .font-semibold strong {
+    font-weight: 800;
+    font-variation-settings: 'wght' 800;
+  }
+  .font-semibold.italic {
+    font-variation-settings:
+      'slnt' 1,
+      'wght' 600;
+  }
+  .font-bold {
+    font-weight: 700;
+    font-variation-settings: 'wght' 700;
+  }
+  .font-bold strong {
+    font-weight: 900;
+    font-variation-settings: 'wght' 900;
+  }
+  .font-bold.italic {
+    font-variation-settings:
+      'slnt' 1,
+      'wght' 700;
+  }
+  .font-extrabold {
+    font-weight: 800;
+    font-variation-settings: 'wght' 800;
+  }
+  .font-extrabold strong {
+    font-weight: 900;
+    font-variation-settings: 'wght' 900;
+  }
+  .font-extrabold.italic {
+    font-variation-settings:
+      'slnt' 1,
+      'wght' 800;
+  }
+  .font-black {
+    font-weight: 900;
+    font-variation-settings: 'wght' 900;
+  }
+  .font-black strong {
+    font-weight: 900;
+    font-variation-settings: 'wght' 900;
+  }
+  .font-black.italic {
+    font-variation-settings:
+      'slnt' 1,
+      'wght' 900;
+  }
+}
