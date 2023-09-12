@@ -56,6 +56,7 @@ const theme: Config['theme'] = {
     fontFamily: {
       sans: ['var(--font-sans)', ...fontFamily.sans],
       NotoSansKr: ['Noto Sans KR'],
+      NanumSquarNeo: ['Nanum Squar Neo'],
     },
     keyframes: {
       'accordion-down': {
