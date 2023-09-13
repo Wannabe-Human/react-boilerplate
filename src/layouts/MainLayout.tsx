@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Loading } from '@components/loader/Loading';
+import { HeaderWrapper } from '@components/header/HeaderWrapper';
 // import { Footer } from '@components/footer/Footer';
 // import { Header } from '@components/header/Header';
 // import { FloatNavigation } from '@components/navigation/FloatNavigation';
@@ -10,7 +11,7 @@ export const MainLayout = () => {
   return (
     <>
       {/* header 영역 */}
-      {/* <Header /> */}
+      <HeaderWrapper />
       {/* navigation 영역 */}
       {/* <FloatNavigation />
       <BottomNavigation /> */}
