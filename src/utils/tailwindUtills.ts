@@ -49,7 +49,6 @@ export const CSSVariables = (config: CSSVariableObj): CSSProperties => {
           ...loopFn(k, v),
         };
       }
-      return pri;
     },
     {} as any,
   ) as any;
