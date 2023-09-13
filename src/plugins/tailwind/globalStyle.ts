@@ -12,54 +12,53 @@ interface GlobalStyleConfig {
     | { extendUnit?: string; extendSwap?: string; extendConfigStyle?: string };
 }
 
-interface GlobalStyle {
-  [name: string]:
-    | Omit<GlobalStyleUnit, 'swap'>
-    | GlobalStyle
-    | { valueUnit: string };
+interface GlobalStyle extends Omit<GlobalStyleUnit, 'swap'> {
+  valueUnit: string;
 }
 
 /**
  * 전역에서 참조하는 용도의 스타일 변수를 관리하고 싶을 때, 해당 파일을 수정하면 된다
  */
 const globalStyleConfig: GlobalStyleConfig = {
-  var: {
-    header: {
-      extendUnit: 'px',
-      height: {
-        mobile: {
-          value: 60,
-        },
-        pc: {
-          value: 100,
-        },
+  header: {
+    extendUnit: 'px',
+    extendSwap: '@',
+    extendConfigStyle: 'px',
+    height: {
+      mobile: {
+        value: 60,
+      },
+      pc: {
+        value: 100,
+      },
+    },
+  },
+  bottomNav: {
+    extendUnit: 'px',
+    extendSwap: '@',
+    extendConfigStyle: 'px',
+    height: {
+      mobile: {
+        value: 60,
       },
     },
   },
   screen: {
     extendUnit: 'px',
     extendSwap: '@',
-    extendConfigStyle: 'calc((2*theme(var.quickmenu.width)) + @x)',
+    extendConfigStyle: 'calc((2*theme(var.quickmenu.width)) + @px)',
     sm: {
       value: 640,
     },
     md: {
       value: 768,
-      unit: 'font',
     },
     lg: {
       value: 1024,
-      configStyle: 'test@test',
     },
     xl: {
       value: 1100,
-      swap: 'calc',
     },
-  },
-  test: {
-    value: 640,
-    unit: 'px',
-    configStyle: 'calc(800px + 768px)',
   },
 };
 
@@ -116,15 +115,15 @@ const loopFn = (
         : undefined;
 
     //config 값 의 상황에 맞게 값 처리
-    if (unit != undefined) {
-      result['unit'] = unit;
-    }
+    result['unit'] = unit ?? '';
     if (configStyle != undefined) {
       let repalceString;
       if (swap != undefined) {
         repalceString = configStyle.replaceAll(swap, preValue['value']);
       }
       result['configStyle'] = repalceString ?? configStyle;
+    } else {
+      result['configStyle'] = preValue['value'] + result['unit'];
     }
     result['value'] = preValue['value'];
     result['valueUnit'] = preValue['value'] + result['unit'];
@@ -148,7 +147,7 @@ const loopFn = (
 /**
  * 실제 참조되어 사용되는값
  */
-export const GLOBAL_STYLE: GlobalStyle = (() => {
+const GLOBAL_STYLE: any = (() => {
   const config = globalStyleConfig;
 
   const result: { [name: string]: any } = {};
@@ -156,5 +155,22 @@ export const GLOBAL_STYLE: GlobalStyle = (() => {
     result[key] = loopFn(value, {});
   });
 
-  return result;
+  return result as any;
 })();
+
+export const GLOBAL = (...strArr: string[]): GlobalStyle => {
+  try {
+    const propsArr = strArr.reduce((prev, next) => {
+      const sList = next.split('.');
+      return prev.concat(...sList);
+    }, [] as string[]);
+
+    return propsArr.reduce((prev, next) => {
+      return prev[next];
+    }, GLOBAL_STYLE as any);
+  } catch (error) {
+    // new Error();
+    console.error(error);
+    return {} as GlobalStyle;
+  }
+};
