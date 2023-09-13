@@ -19,6 +19,9 @@ interface GlobalStyle {
     | { valueUnit: string };
 }
 
+/**
+ * 전역에서 참조하는 용도의 스타일 변수를 관리하고 싶을 때, 해당 파일을 수정하면 된다
+ */
 const globalStyleConfig: GlobalStyleConfig = {
   var: {
     header: {
@@ -67,6 +70,9 @@ const EXTEND_RESERVED_WORD_LSIT = [
 ] as const;
 const UNIT_RESERVED_WORD_LSIT = ['unit', 'configStyle', 'swap'] as const;
 
+/**
+ * globalStyleConfig 를 분석하는 재귀 함수
+ */
 const loopFn = (
   preValue: { [name: string]: any },
   preConfig: {
@@ -139,6 +145,9 @@ const loopFn = (
   return result;
 };
 
+/**
+ * 실제 참조되어 사용되는값
+ */
 export const GLOBAL_STYLE: GlobalStyle = (() => {
   const config = globalStyleConfig;
 
