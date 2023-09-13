@@ -1,6 +1,6 @@
 import { GlobalStyleConfig } from './globalStyleProcessor';
 
-export const I_THEMA = (...strArr: string[]): string => {
+export const I_THEME = (...strArr: string[]): string => {
   const propsArr = strArr.reduce((prev, next) => {
     const sList = next.split('.');
     return prev.concat(...sList);
@@ -57,6 +57,6 @@ export const globalStyleConfig: GlobalStyleConfig = {
     value: 20,
     unit: 'px',
     extendSwap: '@',
-    extendConfigStyle: `calc(${I_THEMA('var.bottomNav.height.')} + @px)`,
+    extendConfigStyle: `calc(${I_THEME('var.bottomNav.height.')} + @px)`,
   },
 };
