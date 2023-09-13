@@ -10,14 +10,20 @@ export interface PortalProps extends HTMLAttributes<HTMLDivElement> {
 
 export const Portal = ({ portal_id, ...props }: PortalProps) => {
   const [target, setTarget] = useState<HTMLElement>();
+  const limit = 2000;
+  const [count, setCount] = useState<number>(limit);
 
   useInterval(
     () => {
       const ele = document.getElementById(portal_id);
 
-      if (ele) setTarget(ele);
+      if (ele) {
+        setTarget(ele);
+      } else {
+        setCount(count - 40);
+      }
     },
-    target == undefined ? 40 : null,
+    target == undefined && count > 0 ? 40 : null,
   );
 
   if (target == undefined) return null;
