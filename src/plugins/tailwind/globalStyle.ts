@@ -158,7 +158,10 @@ const GLOBAL_STYLE: any = (() => {
   return result as any;
 })();
 
-export const GLOBAL = (...strArr: string[]): GlobalStyle => {
+/**
+ * util 에서 export 하여 사용 => GLOBAL
+ */
+export const I_GLOBAL = (...strArr: string[]): GlobalStyle => {
   try {
     const propsArr = strArr.reduce((prev, next) => {
       const sList = next.split('.');
