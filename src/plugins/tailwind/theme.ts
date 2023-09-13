@@ -1,14 +1,32 @@
 import { Config } from 'tailwindcss';
-// import { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
-// const { fontFamily } = ("tailwindcss/defaultTheme")
+import { I_GLOBAL as GLOBAL } from './globalStyleProcessor'; // buid 할때, 절대경로를 인식못해서, 상대경로로 첨부
 
 const theme: Config['theme'] = {
+  var: {
+    header: {
+      height: {
+        mobile: GLOBAL('header.height.mobile').valueUnit,
+        pc: GLOBAL('header.height.pc').valueUnit,
+      },
+    },
+    bottomNav: {
+      height: {
+        mobile: GLOBAL('bottomNav.height.mobile').valueUnit,
+      },
+    },
+  },
   container: {
     center: true,
-    padding: '2rem',
+    padding: {
+      DEFAULT: '5px',
+      // sm: 'theme(var.quickmenu.width)',
+    },
     screens: {
-      '2xl': '1400px',
+      sm: GLOBAL('screen.sm').configStyle,
+      md: GLOBAL('screen.md').configStyle,
+      lg: GLOBAL('screen.lg').configStyle,
+      xl: GLOBAL('screen.xl').configStyle,
     },
   },
   //기본 테마에서 확장시킬때
