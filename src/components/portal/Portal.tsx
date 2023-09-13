@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { useInterval } from 'usehooks-ts';
 
 const PORTAL_ID_LIST = ['navigation_area', 'extra_area'] as const;
-
+const DIRTY_TEXT = '_ldaqogkpriwls'; // id가 겹치는 것을 방지하기 위한 추가 text
 export interface PortalProps extends HTMLAttributes<HTMLDivElement> {
   portal_id: (typeof PORTAL_ID_LIST)[number];
 }
@@ -15,7 +15,8 @@ export const Portal = ({ portal_id, ...props }: PortalProps) => {
 
   useInterval(
     () => {
-      const ele = document.getElementById(portal_id);
+      if (count > 0) console.error('portal 강제 실행 종료 : ', portal_id);
+      const ele = document.getElementById(portal_id + DIRTY_TEXT);
 
       if (ele) {
         setTarget(ele);
@@ -32,5 +33,5 @@ export const Portal = ({ portal_id, ...props }: PortalProps) => {
 };
 
 export const PortalSection = ({ portal_id, ...props }: PortalProps) => {
-  return <section {...props} id={portal_id}></section>;
+  return <section {...props} id={portal_id + DIRTY_TEXT}></section>;
 };
