@@ -6,6 +6,7 @@ import { ATHEME } from '@utils/tailwindUtills';
 import { VariantProps, cva } from 'class-variance-authority';
 import { NoDepthHeader } from '@components/header/types/NoDepthHeader';
 import LogoImg from '@assets/imgs/common/logo.png';
+import { DropAreaHeader } from './types/DropAreaHeader';
 
 interface NavUnit {
   title: string;
@@ -99,6 +100,13 @@ export const HeaderWrapper = ({ type, topGap, mMenu }: HeaderWrapperProps) => {
       {/* header 타입에 따른 구분 */}
       {vTopGap.includes('no-depth') && (
         <NoDepthHeader
+          list={NAV_ITEM_LIST}
+          mMenuOpenFn={openMenu}
+          logoImgSrc={LogoImg}
+        />
+      )}
+      {vTopGap.includes('drop-area') && (
+        <DropAreaHeader
           list={NAV_ITEM_LIST}
           mMenuOpenFn={openMenu}
           logoImgSrc={LogoImg}
