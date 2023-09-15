@@ -2,13 +2,14 @@ import { useState, useEffect, useMemo } from 'react';
 import { Typography, Drawer } from '@material-tailwind/react';
 import { Link, useLocation } from 'react-router-dom';
 import { useMediaQuery } from '@hooks/useMediaQuery';
-import { ATHEME } from '@utils/tailwindUtills';
 import { VariantProps, cva } from 'class-variance-authority';
 import { NoDepthHeader } from '@components/header/types/NoDepthHeader';
 import LogoImg from '@assets/imgs/common/logo.png';
+// import LogoWhiteImg from '@assets/imgs/common/logo_white.png';
 import { DropAreaHeader } from './types/DropAreaHeader';
+import { MNavLinkProps } from '@components/link/MNavLink';
 
-interface NavUnit {
+interface NavUnit extends Pick<MNavLinkProps, 'end' | 'hash' | 'rootInclude'> {
   title: string;
   link?: string;
   list?: NavUnit[];
@@ -16,32 +17,52 @@ interface NavUnit {
 
 export interface NavItem extends NavUnit {
   depth?: number; // navUnit 최대 중첩 반복 횟수
+  onClick?: () => void;
 }
 
 const NAV_ITEM_LIST: NavItem[] = [
   {
-    title: '필요성',
-    link: '#content1',
+    title: '재단 소개',
+    link: '/#content1',
+    end: true,
+    hash: true,
+    rootInclude: true,
   },
   {
-    title: '아크차단기',
-    link: '#content2',
+    title: '봉안당(담)',
+    link: 'room',
+    list: [
+      {
+        title: '실내 봉안당',
+        link: 'indoor',
+      },
+      {
+        title: '준실내 봉안당',
+        link: 'sub-indoor',
+      },
+      {
+        title: '야외 봉안당',
+        link: 'outdoor',
+      },
+    ],
   },
   {
-    title: '비정상\n아크검출',
-    link: '#content3',
+    title: '시설사진',
+    link: '/#content3',
+    end: true,
+    hash: true,
+    rootInclude: true,
   },
   {
-    title: '실시간\n전력 모니터링',
-    link: '#content4',
+    title: '미디어 활동',
+    link: '/#content4',
+    end: true,
+    hash: true,
+    rootInclude: true,
   },
   {
-    title: 'IoT 원격\n모니터링',
-    link: '#content5',
-  },
-  {
-    title: '시험성적서',
-    link: '#content6',
+    title: '온라인 문의',
+    // link: '#content5',
   },
 ];
 
@@ -88,28 +109,26 @@ export const HeaderWrapper = ({ type, topGap, mMenu }: HeaderWrapperProps) => {
   return (
     <>
       {/* sticky 헤더일 경우 body 의 빈부분을 채워주는 역할 */}
-      {vType.includes('header-height') && (
+      {vTopGap.includes('header-height') && (
         <div
-          className={`flex h-[${ATHEME(
-            'header.height',
-            'mobile',
-          )}] w-full md:h-[${ATHEME('header.height', 'pc')}]`}
+          className={`flex h-[theme(var.header.height.mobile)] w-full md:h-[theme(var.header.height.pc)]`}
         />
       )}
 
       {/* header 타입에 따른 구분 */}
-      {vTopGap.includes('no-depth') && (
+      {vType.includes('no-depth') && (
         <NoDepthHeader
           list={NAV_ITEM_LIST}
           mMenuOpenFn={openMenu}
           logoImgSrc={LogoImg}
         />
       )}
-      {vTopGap.includes('drop-area') && (
+      {vType.includes('drop-area') && (
         <DropAreaHeader
           list={NAV_ITEM_LIST}
           mMenuOpenFn={openMenu}
           logoImgSrc={LogoImg}
+          // logoReverseImgSrc={LogoWhiteImg}
         />
       )}
 
