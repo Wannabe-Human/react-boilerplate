@@ -38,6 +38,9 @@
     //any 타입 사용 불가 해제
     "@typescript-eslint/no-explicit-any": "off",
 
+    //TypeScript 컴파일러 오류를 억제 테그 사용 불가 해제
+    "@typescript-eslint/ban-ts-comment": "off",
+
     //최상단에 import react 하는 rule 비활성화, react 17 이후부터는 필수가 아니다
     "react/react-in-jsx-scope": "off" 
   }
