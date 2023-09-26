@@ -3,9 +3,8 @@ import { Bars3Icon } from '@heroicons/react/24/outline';
 import { VariantProps, cva } from 'class-variance-authority';
 import { NavItem } from '@components/header/HeaderWrapper';
 import { ButtonHTMLAttributes, useMemo } from 'react';
-import { cn } from '@utils/cn';
-import { CSSVariables } from '@utils/tailwindUtills';
 import { MNavLink } from '@components/link/MNavLink';
+import { cn, CSSVariables } from '@utils/tailwind';
 
 const DropAreaHeaderVariants = cva('', {
   variants: {},
