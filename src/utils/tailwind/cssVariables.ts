@@ -1,15 +1,4 @@
-import { I_THEME } from '@plugins/tailwind/globalStyle';
 import { CSSProperties } from 'react';
-
-export { I_GLOBAL as GLOBAL } from '@plugins/tailwind/globalStyleProcessor';
-export { I_THEME as THEME } from '@plugins/tailwind/globalStyle';
-
-/**
- * 커스텀 테마를 사용하는 var 를 미리 정의한 함수이다
- */
-export const ATHEME = (...strArr: string[]): string => {
-  return I_THEME('var', ...strArr);
-};
 
 const loopFn = (
   path: string,
