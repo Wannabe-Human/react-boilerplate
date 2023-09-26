@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from '@material-tailwind/react';
 import { RootLayout } from '@layouts/RootLayout';
 import { componentTheme } from '@plugins/material-tailwind/componetTheme';
@@ -16,7 +17,9 @@ export const App = () => {
 
   return (
     <ThemeProvider value={componentTheme}>
-      <RouterProvider router={router} />
+      <RecoilRoot>
+        <RouterProvider router={router} />
+      </RecoilRoot>
     </ThemeProvider>
   );
 };

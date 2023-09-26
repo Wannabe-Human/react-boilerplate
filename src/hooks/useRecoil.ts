@@ -24,13 +24,27 @@ export const useRecoil = () => {
 
       //atom famil 값 가져오기
       if (AtomFamilysKeyList.includes(key)) {
-        throw new Error(
-          'atomFamily key 입니다. 아직 기능이 정의되지 않았습니다',
-        );
+        return atomFamilys[key as AtomFamilysType] as any as RecoilState<T>;
       }
 
       throw new Error('유효하지 않은 atom key 입니다');
     }, [key]);
 
-  return { useAtom, useSetRecoilState, useRecoilValue, useRecoilState };
+  const useAtomFamily = (key: AtomFamilysType) =>
+    useMemo(() => {
+      //atom famil 값 가져오기
+      if (AtomFamilysKeyList.includes(key)) {
+        return atomFamilys[key as AtomFamilysType];
+      }
+
+      throw new Error('유효하지 않은 atom family key 입니다');
+    }, [key]);
+
+  return {
+    useAtom,
+    useAtomFamily,
+    useSetRecoilState,
+    useRecoilValue,
+    useRecoilState,
+  };
 };
