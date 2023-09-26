@@ -1,6 +1,6 @@
 import { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@utils/cn';
+import { cn } from '@utils/tailwind';
 
 const animationVariants = cva('', {
   variants: {
