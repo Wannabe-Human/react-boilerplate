@@ -149,7 +149,12 @@ export const HeaderWrapper = ({ type, topGap, mMenu }: HeaderWrapperProps) => {
 
       {/* mobile menu 설정에 따른 구분 */}
       {wrapperProps.includes('drower') && isMedia('sm', 'less') && (
-        <Drawer open={open} placement='right' onClose={closeMenu}>
+        <Drawer
+          overlayProps={{ className: 'fixed' }}
+          open={open}
+          placement='right'
+          onClose={closeMenu}
+        >
           <div className='p-4 pr-8'>
             <Typography className='my-auto h-fit text-right align-middle text-2xl font-bold'>
               목차
