@@ -1,13 +1,14 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Typography, Drawer } from '@material-tailwind/react';
 import { Link, useLocation } from 'react-router-dom';
-import { useMediaQuery } from '@hooks/useMediaQuery';
 import { VariantProps, cva } from 'class-variance-authority';
+import { Typography, Drawer } from '@material-tailwind/react';
+import { useMediaQuery } from '@hooks/useMediaQuery';
 import { NoDepthHeader } from '@components/header/types/NoDepthHeader';
+import { DropAreaHeader } from '@components/header/types/DropAreaHeader';
+import { DropBoxHeader } from '@components/header/types/DropBoxHeader';
+import { MNavLinkProps } from '@components/link/MNavLink';
 import LogoImg from '@assets/imgs/common/logo.png';
 // import LogoWhiteImg from '@assets/imgs/common/logo_white.png';
-import { DropAreaHeader } from './types/DropAreaHeader';
-import { MNavLinkProps } from '@components/link/MNavLink';
 
 interface NavUnit extends Pick<MNavLinkProps, 'end' | 'hash' | 'rootInclude'> {
   title: string;
@@ -102,29 +103,38 @@ export const HeaderWrapper = ({ type, topGap, mMenu }: HeaderWrapperProps) => {
     closeMenu();
   }, [location]);
 
-  const vType = useMemo(() => HeaderWrapperVariants({ type }), [type]);
-  const vTopGap = useMemo(() => HeaderWrapperVariants({ topGap }), [topGap]);
-  const vMMenu = useMemo(() => HeaderWrapperVariants({ mMenu }), [mMenu]);
+  const wrapperProps = useMemo(
+    () => HeaderWrapperVariants({ type, topGap, mMenu }),
+    [type, topGap, mMenu],
+  );
 
   return (
     <>
       {/* sticky 헤더일 경우 body 의 빈부분을 채워주는 역할 */}
-      {vTopGap.includes('header-height') && (
+      {wrapperProps.includes('header-height') && (
         <div
           className={`flex h-[theme(var.header.height.mobile)] w-full md:h-[theme(var.header.height.pc)]`}
         />
       )}
 
       {/* header 타입에 따른 구분 */}
-      {vType.includes('no-depth') && (
+      {wrapperProps.includes('no-depth') && (
         <NoDepthHeader
           list={NAV_ITEM_LIST}
           mMenuOpenFn={openMenu}
           logoImgSrc={LogoImg}
         />
       )}
-      {vType.includes('drop-area') && (
+      {wrapperProps.includes('drop-area') && (
         <DropAreaHeader
+          list={NAV_ITEM_LIST}
+          mMenuOpenFn={openMenu}
+          logoImgSrc={LogoImg}
+          // logoReverseImgSrc={LogoWhiteImg}
+        />
+      )}
+      {wrapperProps.includes('drop-box') && (
+        <DropBoxHeader
           list={NAV_ITEM_LIST}
           mMenuOpenFn={openMenu}
           logoImgSrc={LogoImg}
@@ -133,7 +143,7 @@ export const HeaderWrapper = ({ type, topGap, mMenu }: HeaderWrapperProps) => {
       )}
 
       {/* mobile menu 설정에 따른 구분 */}
-      {vMMenu.includes('drower') && isMedia('sm', 'less') && (
+      {wrapperProps.includes('drower') && isMedia('sm', 'less') && (
         <Drawer open={open} placement='right' onClose={closeMenu}>
           <div className='p-4 pr-8'>
             <Typography className='my-auto h-fit text-right align-middle text-2xl font-bold'>
