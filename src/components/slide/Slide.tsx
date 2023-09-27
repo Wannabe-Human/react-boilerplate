@@ -1,16 +1,20 @@
 import {
   ReactNode,
   forwardRef,
-  useImperativeHandle,
-  useRef,
-  useMemo,
-  useState,
   useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
-import { Swiper, SwiperSlide, SwiperProps, SwiperClass } from 'swiper/react';
+
+import 'swiper/css';
+// 핵심 Swiper 스타일만
+import 'swiper/css/bundle';
 import * as swiperModules from 'swiper/modules';
-import 'swiper/css'; // 핵심 Swiper 스타일만
-import 'swiper/css/bundle'; //모든 모듈 스타일 사용
+import { Swiper, SwiperClass, SwiperProps, SwiperSlide } from 'swiper/react';
+
+//모든 모듈 스타일 사용
 // import 'swiper/css/a11y'; // A11y 모듈에 필요한 스타일
 // import 'swiper/css/autoplay'; // 자동 재생 모듈에 필요한 스타일
 // import 'swiper/css/controller'; // 컨트롤러 모듈에 필요한 스타일

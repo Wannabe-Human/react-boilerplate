@@ -1,4 +1,5 @@
 import { HTMLAttributes } from 'react';
+
 import { cn } from '@utils/tailwind';
 
 export interface ImgBackgroundProps extends HTMLAttributes<HTMLDivElement> {

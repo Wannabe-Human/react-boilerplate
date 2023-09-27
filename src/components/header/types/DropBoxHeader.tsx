@@ -1,10 +1,13 @@
-import { IconButton } from '@material-tailwind/react';
-import { Bars3Icon } from '@heroicons/react/24/outline';
-import { VariantProps, cva } from 'class-variance-authority';
-import { NavItem } from '@components/header/HeaderWrapper';
 import { ButtonHTMLAttributes, useMemo } from 'react';
+
+import { Bars3Icon } from '@heroicons/react/24/outline';
+import { IconButton } from '@material-tailwind/react';
+import { VariantProps, cva } from 'class-variance-authority';
+
+import { NavItem } from '@components/header/HeaderWrapper';
 import { MNavLink } from '@components/link/MNavLink';
-import { cn, CSSVariables } from '@utils/tailwind';
+
+import { CSSVariables, cn } from '@utils/tailwind';
 
 const DropBoxHeaderVariants = cva('', {
   variants: {},
@@ -31,10 +34,14 @@ export const DropBoxHeader = ({
   const CSSVariableStyle = useMemo(
     () =>
       CSSVariables({
-        head: {
+        'head': {
           'tx-color': {
-            common: '#ffffff',
-            category: { active: '#a1914e', expend: '#3d3c3c', over: '#3d3c3c' },
+            'common': '#ffffff',
+            'category': {
+              active: '#a1914e',
+              expend: '#3d3c3c',
+              over: '#3d3c3c',
+            },
             'category-item': { active: '#ffd800' },
           },
           'bg-color': {

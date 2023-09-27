@@ -1,10 +1,14 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from '@material-tailwind/react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+
 import { RootLayout } from '@layouts/RootLayout';
-import { componentTheme } from '@plugins/material-tailwind/componetTheme';
-import { DefaultErrorBoundary } from '@/errorboundary/DefaultErrorBoundary';
+
 import { mainRouter } from '@pages/Router';
+
+import { componentTheme } from '@plugins/material-tailwind/componetTheme';
+
+import { DefaultErrorBoundary } from '@/errorboundary/DefaultErrorBoundary';
 
 export const App = () => {
   const router = createBrowserRouter([

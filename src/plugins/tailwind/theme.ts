@@ -1,6 +1,9 @@
 import { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
-import { I_GLOBAL as GLOBAL } from './globalStyleProcessor'; // buid 할때, 절대경로를 인식못해서, 상대경로로 첨부
+
+import { I_GLOBAL as GLOBAL } from './globalStyleProcessor';
+
+// buid 할때, 절대경로를 인식못해서, 상대경로로 첨부
 
 const theme: Config['theme'] = {
   var: {

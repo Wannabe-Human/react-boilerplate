@@ -1,8 +1,8 @@
-import { IconButton } from '@material-tailwind/react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
-import { ATHEME } from '@utils/tailwindUtills';
+import { IconButton } from '@material-tailwind/react';
 import { VariantProps, cva } from 'class-variance-authority';
+import { Link } from 'react-router-dom';
+
 import { NavItem } from '@components/header/HeaderWrapper';
 
 const NoDepthHeaderVariants = cva('', {
@@ -25,10 +25,7 @@ export const NoDepthHeader = ({
 }: NoDepthHeaderProps) => {
   return (
     <header
-      className={`fixed top-0 z-50 flex h-[${ATHEME(
-        'header.height',
-        'mobile',
-      )}] w-full bg-white shadow-md md:h-[${ATHEME('header.height', 'pc')}]`}
+      className={`fixed top-0 z-50 flex h-[theme(var.header.height.mobile)] w-full bg-white shadow-md md:h-[theme(var.header.height.pc)]`}
       {...props}
     >
       <div className='container flex h-full w-full'>

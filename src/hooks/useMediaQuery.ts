@@ -1,5 +1,6 @@
-import { GLOBAL } from '@utils/tailwindUtills';
 import { useMediaQuery as query } from 'usehooks-ts';
+
+import { GLOBAL } from '@utils/tailwind';
 
 type ContainerMediaType = 'mobile' | 'sm' | 'md' | 'lg' | 'xl';
 type mediaType = 'curr' | 'less' | 'more' | '';

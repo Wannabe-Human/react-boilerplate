@@ -1,10 +1,14 @@
 import { Suspense } from 'react';
+
 import { Outlet, ScrollRestoration } from 'react-router-dom';
+
+import { useMediaQuery } from '@hooks/useMediaQuery';
+import { useRootAxiosInterceptor } from '@hooks/useRootAxiosInterceptor';
+import { useRootRouterScrollToHash } from '@hooks/useRootRouterScrollToHash';
+
 import { Loading } from '@components/loader/Loading';
 import { PortalSection } from '@components/portal/Portal';
-import { useMediaQuery } from '@hooks/useMediaQuery';
-import { useRootRouterScrollToHash } from '@hooks/useRootRouterScrollToHash';
-import { useRootAxiosInterceptor } from '@hooks/useRootAxiosInterceptor';
+
 import { GLOBAL } from '@utils/tailwind';
 
 export const RootLayout = () => {

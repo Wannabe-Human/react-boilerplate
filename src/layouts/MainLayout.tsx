@@ -1,7 +1,10 @@
 import { Suspense } from 'react';
+
 import { Outlet } from 'react-router-dom';
-import { Loading } from '@components/loader/Loading';
+
 import { HeaderWrapper } from '@components/header/HeaderWrapper';
+import { Loading } from '@components/loader/Loading';
+
 // import { Footer } from '@components/footer/Footer';
 // import { Header } from '@components/header/Header';
 // import { FloatNavigation } from '@components/navigation/FloatNavigation';

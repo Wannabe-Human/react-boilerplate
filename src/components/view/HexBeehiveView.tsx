@@ -1,5 +1,6 @@
 import { HTMLAttributes } from 'react';
-import { cn, CSSVariables } from '@utils/tailwind';
+
+import { CSSVariables, cn } from '@utils/tailwind';
 
 export interface HexBeehiveViewProps extends HTMLAttributes<HTMLDivElement> {
   itemList: {
@@ -25,7 +26,7 @@ export const HexBeehiveView = ({
       style={CSSVariables({
         grid: {
           'repeat-cols': `${lineLimit}`,
-          gap: `${gap * 2}px`,
+          'gap': `${gap * 2}px`,
           'even-rows': {
             offset: `${gap}px`,
           },

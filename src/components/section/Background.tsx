@@ -1,12 +1,14 @@
 import { HTMLAttributes, useEffect, useRef, useState } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+
+import { type VariantProps, cva } from 'class-variance-authority';
+
 import { cn } from '@utils/tailwind';
 
 const animationVariants = cva('', {
   variants: {
     animation: {
-      none: 'animate-none',
-      fade: 'animate-fade',
+      'none': 'animate-none',
+      'fade': 'animate-fade',
       'fade-up': 'animate-fade-up',
       'fade-down': 'animate-fade-down',
       'fade-left': 'animate-fade-left',
@@ -21,9 +23,9 @@ const animationVariants = cva('', {
       infinite: 'animate-infinite',
     },
     easing: {
-      linear: 'animate-ease-linear',
-      in: 'animate-ease-in',
-      out: 'animate-ease-out',
+      'linear': 'animate-ease-linear',
+      'in': 'animate-ease-in',
+      'out': 'animate-ease-out',
       'in-out': 'animate-ease-in-out',
     },
   },

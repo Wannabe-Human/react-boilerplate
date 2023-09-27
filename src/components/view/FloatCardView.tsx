@@ -1,6 +1,8 @@
 import { HTMLAttributes } from 'react';
+
 import { useScrollHeight } from '@hooks/useScrollHeight';
-import { cn, CSSVariables, GLOBAL } from '@utils/tailwind';
+
+import { CSSVariables, GLOBAL, cn } from '@utils/tailwind';
 
 export interface FloatCardViewProps extends HTMLAttributes<HTMLDivElement> {
   parentsClassName?: string;

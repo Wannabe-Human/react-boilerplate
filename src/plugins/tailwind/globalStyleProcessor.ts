@@ -1,4 +1,5 @@
 import { globalStyleConfig } from './globalStyle';
+
 /**
  * 테마를 사용할때 필요한 문자열을 만들어주는 함수
  */

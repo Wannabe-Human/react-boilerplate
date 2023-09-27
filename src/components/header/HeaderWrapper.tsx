@@ -1,13 +1,18 @@
-import { useState, useEffect, useMemo } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+
+import { Drawer, Typography } from '@material-tailwind/react';
 import { VariantProps, cva } from 'class-variance-authority';
-import { Typography, Drawer } from '@material-tailwind/react';
+import { Link, useLocation } from 'react-router-dom';
+
 import { useMediaQuery } from '@hooks/useMediaQuery';
-import { NoDepthHeader } from '@components/header/types/NoDepthHeader';
+
 import { DropAreaHeader } from '@components/header/types/DropAreaHeader';
 import { DropBoxHeader } from '@components/header/types/DropBoxHeader';
+import { NoDepthHeader } from '@components/header/types/NoDepthHeader';
 import { MNavLinkProps } from '@components/link/MNavLink';
+
 import LogoImg from '@assets/imgs/common/logo.png';
+
 // import LogoWhiteImg from '@assets/imgs/common/logo_white.png';
 
 interface NavUnit extends Pick<MNavLinkProps, 'end' | 'hash' | 'rootInclude'> {
@@ -76,7 +81,7 @@ const HeaderWrapperVariants = cva('', {
     },
     topGap: {
       'header-height': 'header-height',
-      none: 'none',
+      'none': 'none',
     },
     mMenu: {
       drower: 'drower',
@@ -113,7 +118,7 @@ export const HeaderWrapper = ({ type, topGap, mMenu }: HeaderWrapperProps) => {
       {/* sticky 헤더일 경우 body 의 빈부분을 채워주는 역할 */}
       {wrapperProps.includes('header-height') && (
         <div
-          className={`flex h-[theme(var.header.height.mobile)] w-full md:h-[theme(var.header.height.pc)]`}
+          className={`flex h-[theme(var.header.height.mobile)] w-full md:h-[theme(var.header.height.pc)] `}
         />
       )}
 

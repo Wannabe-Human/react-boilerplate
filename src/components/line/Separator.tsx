@@ -1,5 +1,7 @@
-import { forwardRef, ElementRef, ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
+
 import { Root } from '@radix-ui/react-separator';
+
 import { cn } from '@utils/tailwind';
 
 const Separator = forwardRef<

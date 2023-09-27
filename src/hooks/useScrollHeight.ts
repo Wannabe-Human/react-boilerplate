@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useScrollHeight = (height?: number) => {
   const [isFixed, setIsFixed] = useState(false);
