@@ -132,6 +132,9 @@ export const Slide = forwardRef<SwiperClass, SlideProps>(
 
           // 슬라이더 업데이트, 슬라이드를 수동으로 추가/제거 후, 호출하면 반영된다
           update: () => swiperRef.current?.swiper.update(),
+
+          //자동재생 옵션정보
+          autoplay: swiperRef.current?.swiper.autoplay,
         } as any;
       },
       [swiperRef],
