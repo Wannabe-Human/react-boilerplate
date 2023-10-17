@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableRow,
   TableWrapper,
-} from '@components/table';
+} from '@components/table/parts';
 
 import { cn } from '@utils/tailwind/cn';
 import { CSSVariables } from '@utils/tailwind/cssVariables';
