@@ -16,5 +16,8 @@
     "source.fixAll.eslint": true
   },
   // "eslint.debug": true,
-  "javascript.preferences.importModuleSpecifier": "shortest"
+  "javascript.preferences.importModuleSpecifier": "shortest",
+  "material-icon-theme.folders.associations": {
+    "parts": "components"
+  }
 }
