@@ -1,6 +1,8 @@
-import { cn } from '@utils/tailwind/cn';
 import { HTMLAttributes } from 'react';
+
 import ReactPlayer, { YouTubePlayerProps } from 'react-player/youtube';
+
+import { cn } from '@utils/tailwind/cn';
 
 export interface VideoPlayerProps
   extends Pick<HTMLAttributes<HTMLDivElement>, 'id' | 'className'>,

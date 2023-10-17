@@ -1,5 +1,7 @@
 import { HTMLAttributes, forwardRef } from 'react';
+
 import { VariantProps, cva } from 'class-variance-authority';
+
 import { cn } from '@utils/tailwind/cn';
 
 const CaptionVariants = cva('mt-4 text-sm text-muted-foreground', {

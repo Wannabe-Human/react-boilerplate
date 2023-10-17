@@ -1,6 +1,8 @@
-import { forwardRef, ElementRef, ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react';
+
 import * as LabelPrimitive from '@radix-ui/react-label';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
+
 import { cn } from '@utils/tailwind/cn';
 
 const labelVariants = cva(
