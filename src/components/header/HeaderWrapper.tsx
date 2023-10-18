@@ -6,12 +6,12 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { useMediaQuery } from '@hooks/useMediaQuery';
 
-import { DropAreaHeader } from '@components/header/types/DropAreaHeader';
-import { DropBoxHeader } from '@components/header/types/DropBoxHeader';
-import { NoDepthHeader } from '@components/header/types/NoDepthHeader';
+import { DropAreaHeader } from '@components/header/parts/DropAreaHeader';
+import { DropBoxHeader } from '@components/header/parts/DropBoxHeader';
+import { NoDepthHeader } from '@components/header/parts/NoDepthHeader';
 import { MNavLinkProps } from '@components/link/MNavLink';
 
-import LogoImg from '@assets/imgs/common/logo.png';
+import LogoImg from '@assets/svgs/common/logo.svg';
 
 // import LogoWhiteImg from '@assets/imgs/common/logo_white.png';
 
@@ -28,47 +28,61 @@ export interface NavItem extends NavUnit {
 
 const NAV_ITEM_LIST: NavItem[] = [
   {
-    title: '재단 소개',
-    link: '/#content1',
+    title: '소개',
+    link: '/',
     end: true,
     hash: true,
     rootInclude: true,
   },
   {
-    title: '봉안당(담)',
-    link: 'room',
+    title: '실험실',
+    link: '/test',
+    end: true,
+    hash: true,
+    rootInclude: true,
+  },
+  {
+    title: '프로젝트',
+    link: 'project',
     list: [
       {
-        title: '실내 봉안당',
-        link: 'indoor',
+        title: '무버',
+        link: 'mover',
       },
       {
-        title: '준실내 봉안당',
-        link: 'sub-indoor',
+        title: '제일전기',
+        link: 'cheilelec',
       },
       {
-        title: '야외 봉안당',
-        link: 'outdoor',
+        title: '휴림 봉안당',
+        link: 'heurim',
       },
     ],
   },
   {
-    title: '시설사진',
-    link: '/#content3',
+    title: '컴포넌트',
+    link: '/components',
+    list: [
+      {
+        title: '전체',
+        end: true,
+      },
+      {
+        title: '이미지',
+        link: 'view',
+      },
+      {
+        title: '테이블',
+        link: 'table',
+      },
+    ],
+  },
+  {
+    title: '설정',
+    link: '/setting',
     end: true,
     hash: true,
     rootInclude: true,
-  },
-  {
-    title: '미디어 활동',
-    link: '/#content4',
-    end: true,
-    hash: true,
-    rootInclude: true,
-  },
-  {
-    title: '온라인 문의',
-    // link: '#content5',
   },
 ];
 
@@ -88,7 +102,7 @@ const HeaderWrapperVariants = cva('', {
     },
   },
   defaultVariants: {
-    type: 'no-depth',
+    type: 'drop-area',
     topGap: 'header-height',
     mMenu: 'drower',
   },

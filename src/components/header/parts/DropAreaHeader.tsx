@@ -166,7 +166,7 @@ export const DropAreaHeader = ({
                       return (
                         <li
                           key={`nav-item-${i}-sItem-${si}`}
-                          className='my-[14px] flex w-full cursor-pointer justify-start text-white drop-shadow-sm '
+                          className='my-[8px] flex w-full cursor-pointer justify-start text-white drop-shadow-sm '
                         >
                           <MNavLink
                             to={
@@ -175,7 +175,7 @@ export const DropAreaHeader = ({
                                 : item.link ?? '/'
                             }
                             className={cn(
-                              'my-auto flex h-fit cursor-pointer flex-row whitespace-pre-wrap text-center align-middle font-normal',
+                              'my-auto flex h-fit cursor-pointer flex-row whitespace-pre-wrap text-center align-middle font-light',
                               'before:mx-2 before:my-auto before:flex before:h-[5px] before:w-[5px] before:rounded-2xl before:bg-[var(--head-tx-color-category-item-active)] before:content-[""]',
                             )}
                             isActiveClassName={(isActive) =>
