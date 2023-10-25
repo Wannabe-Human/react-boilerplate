@@ -93,6 +93,9 @@ const theme: Config['theme'] = {
       'accordion-down': 'accordion-down 0.2s ease-out',
       'accordion-up': 'accordion-up 0.2s ease-out',
     },
+    gridTemplateColumns: {
+      'repeat-custom': 'repeat(var(--grid-repeat-cols, 4), minmax(0, 1fr))',
+    },
   },
 };
 
