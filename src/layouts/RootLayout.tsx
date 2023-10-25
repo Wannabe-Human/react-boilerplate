@@ -6,6 +6,7 @@ import { useMediaQuery } from '@hooks/useMediaQuery';
 import { useRootAxiosInterceptor } from '@hooks/useRootAxiosInterceptor';
 import { useRootRouterScrollToHash } from '@hooks/useRootRouterScrollToHash';
 
+import { GlobalAlertDialogProvider } from '@components/alert/GlobalAlertDialogProvider';
 import { Loading } from '@components/loader/Loading';
 import { PortalSection } from '@components/portal/Portal';
 
@@ -29,6 +30,7 @@ export const RootLayout = () => {
         <div className='relative flex h-full w-full flex-col'>
           <PortalSection portal_id='navigation_area' />
           <PortalSection portal_id='extra_area' />
+          <GlobalAlertDialogProvider />
         </div>
       </div>
       <Suspense fallback={<Loading />}>
