@@ -1,6 +1,8 @@
+import { FORM_SAMPLE_LIST } from '@components/samples/forms';
 import { TABLE_SAMPLE_LIST } from '@components/samples/tables';
+import { VIEW_SAMPLE_LIST } from '@components/samples/views';
 
-type SampleCategory = 'table' | 'view';
+type SampleCategory = 'table' | 'form' | 'view';
 export const TOTAL_SAMPLE_LIST: {
   category: SampleCategory;
   sampleList: { id: string; sampleEl: () => JSX.Element }[];
@@ -10,8 +12,12 @@ export const TOTAL_SAMPLE_LIST: {
     sampleList: TABLE_SAMPLE_LIST,
   },
   {
+    category: 'form',
+    sampleList: FORM_SAMPLE_LIST,
+  },
+  {
     category: 'view',
-    sampleList: TABLE_SAMPLE_LIST,
+    sampleList: VIEW_SAMPLE_LIST,
   },
 ];
 
