@@ -20,9 +20,11 @@ export const MainLayout = () => {
       <BottomNavigation /> */}
 
       {/* content 영역 */}
-      <Suspense fallback={<Loading />}>
-        <Outlet />
-      </Suspense>
+      <main className='h-fit w-full'>
+        <Suspense fallback={<Loading />}>
+          <Outlet />
+        </Suspense>
+      </main>
       {/* footer 영역 */}
       {/* <Footer /> */}
     </>
