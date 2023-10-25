@@ -22,6 +22,7 @@
     "clsx": "^2.0.0",
     "hls.js": "^1.4.12",
     "lucide-react": "^0.268.0",
+    "numeral": "^2.0.6",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
@@ -71,6 +72,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
+    "@types/numeral": "^2.0.4",
     "customize-cra": "^1.0.0",
     "eslint-config-prettier": "^9.0.0",
     "postcss-js": "^4.0.1",
