@@ -52,7 +52,9 @@ export const ComponentExplainCard = ({
     >
       {/* 제목 및 설명 */}
       <div className='explain-area flex flex-wrap'>
-        <h2 className='w-full text-2xl font-bold tracking-wide'>{title}</h2>
+        <h2 className='w-full text-2xl font-extrabold tracking-[0.02em] [word-spacing:0.1em]'>
+          {title}
+        </h2>
         <DescriptionEl className='mt-2  whitespace-pre-wrap text-base font-normal tracking-wide [word-spacing:0.15em]'>
           {description}
         </DescriptionEl>
