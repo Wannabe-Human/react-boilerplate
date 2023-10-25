@@ -1,4 +1,4 @@
-import { globalStyleConfig } from './globalStyle';
+import { GLOBAL_STYLE_CONFIG } from './globalStyle';
 
 /**
  * 테마를 사용할때 필요한 문자열을 만들어주는 함수
@@ -30,7 +30,7 @@ const EXTEND_RESERVED_WORD_LSIT = [
 const UNIT_RESERVED_WORD_LSIT = ['unit', 'configStyle', 'swap'] as const;
 
 /**
- * globalStyleConfig 를 분석하는 재귀 함수
+ * GLOBAL_STYLE_CONFIG 를 분석하는 재귀 함수
  */
 const loopFn = (
   preValue: { [name: string]: any },
@@ -108,7 +108,7 @@ const loopFn = (
  * 실제 참조되어 사용되는값
  */
 const GLOBAL_STYLE: any = (() => {
-  const config = globalStyleConfig;
+  const config = GLOBAL_STYLE_CONFIG;
 
   const result: { [name: string]: any } = {};
   Object.entries(config).forEach(([key, value]) => {

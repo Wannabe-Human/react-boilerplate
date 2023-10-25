@@ -12,7 +12,7 @@ export const I_THEME = (...strArr: string[]): string => {
 /**
  * 전역에서 참조하는 용도의 스타일 변수를 관리하고 싶을 때, 해당 파일을 수정하면 된다
  */
-export const globalStyleConfig: GlobalStyleConfig = {
+export const GLOBAL_STYLE_CONFIG: GlobalStyleConfig = {
   header: {
     extendUnit: 'px',
     extendSwap: '@',
