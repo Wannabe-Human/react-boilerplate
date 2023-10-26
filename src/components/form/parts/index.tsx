@@ -3,6 +3,7 @@ import {
   createContext,
   forwardRef,
   useContext,
+  useEffect,
   useId,
 } from 'react';
 
@@ -13,6 +14,7 @@ import {
   FieldValues,
   FormProvider,
   useFormContext,
+  useWatch,
 } from 'react-hook-form';
 
 import { cn } from '@utils/tailwind/cn';
@@ -39,11 +41,49 @@ export const FormField = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
+  cacheMode = 'none',
+  name,
   ...props
-}: ControllerProps<TFieldValues, TName>) => {
+}: Omit<ControllerProps<TFieldValues, TName>, 'shouldUnregister'> & {
+  cacheMode?: 'none' | 'unregister' | 'cached';
+}) => {
+  const {
+    register,
+    setValue,
+    resetField,
+    getValues,
+    getFieldState,
+    control,
+    formState,
+  } = useFormContext();
+
+  const targetValue = useWatch({ name, control });
+  const { isDirty } = getFieldState(name, formState);
+
+  useEffect(() => {
+    if (cacheMode == 'cached' && isDirty) {
+      if (targetValue) setValue(`cached.${name}`, targetValue);
+      else resetField(`cached.${name}`, { defaultValue: undefined });
+    }
+
+    if (!isDirty) {
+      if (cacheMode == 'cached') {
+        const cachedValue = getValues(`cached.${name}`);
+        if (cachedValue) setValue(name, cachedValue, { shouldDirty: true });
+      } else resetField(name);
+    }
+  }, [name, cacheMode, targetValue, isDirty, setValue, getValues, resetField]);
+
   return (
-    <FormFieldContext.Provider value={{ name: props.name }}>
-      <Controller {...props} />
+    <FormFieldContext.Provider value={{ name }}>
+      <Controller
+        {...props}
+        name={name}
+        shouldUnregister={cacheMode != 'none'}
+      />
+      {cacheMode == 'cached' && name && (
+        <input type='hidden' {...register(`cached.${name}`)} />
+      )}
     </FormFieldContext.Provider>
   );
 };
@@ -51,7 +91,7 @@ export const FormField = <
 export const useFormField = () => {
   const fieldContext = useContext(FormFieldContext);
   const itemContext = useContext(FormItemContext);
-  const { getFieldState, formState } = useFormContext();
+  const { getFieldState, formState, setValue, getValues } = useFormContext();
 
   const fieldState = getFieldState(fieldContext.name, formState);
 
@@ -64,6 +104,8 @@ export const useFormField = () => {
   return {
     id,
     name: fieldContext.name,
+    getValues,
+    setValue,
     formItemId: `${id}-form-item`,
     formDescriptionId: `${id}-form-item-description`,
     formMessageId: `${id}-form-item-message`,
