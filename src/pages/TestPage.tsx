@@ -1,5 +1,9 @@
-import { BasicTableSample } from '@components/samples/tables/BasicTableSample';
+import { SmartFormSample } from '@components/samples/forms/SmartFormSample';
 
 export const TestPage = () => {
-  return <BasicTableSample />;
+  return (
+    <>
+      <SmartFormSample />
+    </>
+  );
 };
