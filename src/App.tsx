@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@material-tailwind/react';
+import { HelmetProvider } from 'react-helmet-async';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
@@ -22,7 +23,9 @@ export const App = () => {
   return (
     <ThemeProvider value={componentTheme}>
       <RecoilRoot>
-        <RouterProvider router={router} />
+        <HelmetProvider>
+          <RouterProvider router={router} />
+        </HelmetProvider>
       </RecoilRoot>
     </ThemeProvider>
   );
