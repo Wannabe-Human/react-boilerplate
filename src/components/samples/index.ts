@@ -5,18 +5,22 @@ import { VIEW_SAMPLE_LIST } from '@components/samples/views';
 type SampleCategory = 'table' | 'form' | 'view';
 export const TOTAL_SAMPLE_LIST: {
   category: SampleCategory;
+  navTitle: string;
   sampleList: { id: string; sampleEl: () => JSX.Element }[];
 }[] = [
   {
     category: 'table',
+    navTitle: '테이블',
     sampleList: TABLE_SAMPLE_LIST,
   },
   {
     category: 'form',
+    navTitle: 'Form',
     sampleList: FORM_SAMPLE_LIST,
   },
   {
     category: 'view',
+    navTitle: 'UI뷰',
     sampleList: VIEW_SAMPLE_LIST,
   },
 ];

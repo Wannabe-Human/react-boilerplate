@@ -1,9 +1,16 @@
 import { Fragment } from 'react';
 
+import { useParams } from 'react-router-dom';
+
 import { SAMPLE_CATEGORY_LIST, TOTAL_SAMPLE_LIST } from '@components/samples';
 
 export const ComponentsExplainPage = () => {
-  const CATEGORY_LIST = SAMPLE_CATEGORY_LIST;
+  const { category } = useParams();
+  const CATEGORY_LIST =
+    category && SAMPLE_CATEGORY_LIST.includes(category as any)
+      ? [category]
+      : SAMPLE_CATEGORY_LIST;
+
   return (
     <div className='h-fit w-full space-y-10'>
       {TOTAL_SAMPLE_LIST.filter((sampleGroup) =>

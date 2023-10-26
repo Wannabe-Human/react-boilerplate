@@ -30,7 +30,7 @@ export const mainRouter: RouteObject[] = [
             errorElement: <DefaultErrorBoundary />,
           },
           {
-            path: 'components',
+            path: 'components/:category?',
             element: <ComponentsExplainPage />,
             errorElement: <DefaultErrorBoundary />,
           },

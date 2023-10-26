@@ -10,6 +10,7 @@ import { DropAreaHeader } from '@components/header/parts/DropAreaHeader';
 import { DropBoxHeader } from '@components/header/parts/DropBoxHeader';
 import { NoDepthHeader } from '@components/header/parts/NoDepthHeader';
 import { MNavLinkProps } from '@components/link/MNavLink';
+import { TOTAL_SAMPLE_LIST } from '@components/samples';
 
 import LogoImg from '@assets/svgs/common/logo.svg';
 
@@ -67,14 +68,10 @@ const NAV_ITEM_LIST: NavItem[] = [
         title: '전체',
         end: true,
       },
-      {
-        title: '이미지',
-        link: 'view',
-      },
-      {
-        title: '테이블',
-        link: 'table',
-      },
+      ...TOTAL_SAMPLE_LIST.map((sample) => ({
+        title: sample.navTitle,
+        link: sample.category,
+      })),
     ],
   },
   {
