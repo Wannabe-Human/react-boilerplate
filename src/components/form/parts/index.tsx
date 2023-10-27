@@ -5,6 +5,7 @@ import {
   useContext,
   useEffect,
   useId,
+  useState,
 } from 'react';
 
 import {
@@ -56,7 +57,7 @@ export const FormField = <
     control,
     formState,
   } = useFormContext();
-
+  const [isOnce, setIsOnce] = useState<boolean>(true);
   const targetValue = useWatch({ name, control });
   const { isDirty } = getFieldState(name, formState);
 
@@ -66,13 +67,24 @@ export const FormField = <
       else resetField(`cached.${name}`, { defaultValue: undefined });
     }
 
-    if (!isDirty) {
+    if (!isDirty && isOnce) {
       if (cacheMode == 'cached') {
         const cachedValue = getValues(`cached.${name}`);
         if (cachedValue) setValue(name, cachedValue, { shouldDirty: true });
       } else resetField(name);
+      setIsOnce(false);
     }
-  }, [name, cacheMode, targetValue, isDirty, setValue, getValues, resetField]);
+  }, [
+    name,
+    cacheMode,
+    targetValue,
+    isDirty,
+    setValue,
+    getValues,
+    resetField,
+    isOnce,
+    setIsOnce,
+  ]);
 
   return (
     <FormFieldContext.Provider value={{ name }}>
