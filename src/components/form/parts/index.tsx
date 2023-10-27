@@ -62,7 +62,7 @@ export const FormField = <
   const { isDirty } = getFieldState(name, formState);
 
   useEffect(() => {
-    if (cacheMode == 'cached' && isDirty) {
+    if (cacheMode == 'cached' && (isDirty || !isOnce)) {
       if (targetValue) setValue(`cached.${name}`, targetValue);
       else resetField(`cached.${name}`, { defaultValue: undefined });
     }
