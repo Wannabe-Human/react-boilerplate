@@ -5,6 +5,8 @@ import { useZodForm } from '@hooks/useZodForm';
 
 import { CheckboxField } from '@components/field/CheckboxField';
 import { InputField } from '@components/field/InputField';
+import { RadioGroupField } from '@components/field/RadioGroupField';
+import { RadioItemField } from '@components/field/RadioItemField';
 import { TextareaField } from '@components/field/TextAreaField';
 import {
   Form,
@@ -26,10 +28,10 @@ const formSchema = z.object({
   //     /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
   //     '휴대폰 번호 형식이 아닙니다.',
   //   ),
-  isCheck: apiBoolean.default(1),
+  isCheck: apiBoolean(1),
   // email: z.optional(z.string().email('이메일 형식이 아닙니다.')),
   description: z.string().optional(),
-  // firstname: z.string().min(2, 'error on firstname'),
+  hiList: z.enum(['all', 'hello', 'hi', 'hey']),
   // lastname: z
   //   .string()
   //   .transform((val) => val.length)
@@ -58,7 +60,9 @@ const formSchema = z.object({
 });
 
 export const SmartFormSample = () => {
-  const form = useZodForm(formSchema);
+  const form = useZodForm(formSchema, {
+    // shouldUseNativeValidation: true,
+  });
 
   return (
     <ComponentExplainCard
@@ -127,6 +131,69 @@ export const SmartFormSample = () => {
                 <FormMessage className='p-2 text-xs' />
               </FormItem>
             )}
+          />
+          <FormField
+            control={form.control}
+            name='hiList'
+            render={({ field }) => (
+              <FormItem className='space-y-3'>
+                <FormLabel>라디오 그룹 예시</FormLabel>
+                <FormControl>
+                  <RadioGroupField
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className='flex flex-col space-y-1'
+                  >
+                    <FormItem className='flex items-center space-x-3 space-y-0'>
+                      <FormControl>
+                        <RadioItemField value='all' />
+                      </FormControl>
+                      <FormLabel className='cursor-pointer font-normal'>
+                        값 : all
+                      </FormLabel>
+                    </FormItem>
+                    <FormItem className='flex items-center space-x-3 space-y-0'>
+                      <FormControl>
+                        <RadioItemField value='hello' />
+                      </FormControl>
+                      <FormLabel className='cursor-pointer font-normal'>
+                        값 : hello
+                      </FormLabel>
+                    </FormItem>
+                    <FormItem className='flex items-center space-x-3 space-y-0'>
+                      <FormControl>
+                        <RadioItemField value='hi' />
+                      </FormControl>
+                      <FormLabel className='cursor-pointer font-normal'>
+                        값 : hi
+                      </FormLabel>
+                    </FormItem>
+                    <FormItem className='flex items-center space-x-3 space-y-0'>
+                      <FormControl>
+                        <RadioItemField value='hey' />
+                      </FormControl>
+                      <FormLabel className='cursor-pointer font-normal'>
+                        값 : hey
+                      </FormLabel>
+                    </FormItem>
+                  </RadioGroupField>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+            //   <FormItem className='flex flex-col items-center md:flex-row'>
+            //     <FormControl>
+            //       <CheckboxField
+            //         checked={field.value}
+            //         onCheckedChange={field.onChange}
+            //       />
+            //     </FormControl>
+            //     <FormLabel className='pt-2text-md flex w-32 cursor-pointer items-start justify-start md:text-lg'>
+            //       체크박스
+            //     </FormLabel>
+            //     <FormMessage className='p-2 text-xs' />
+            //   </FormItem>
+            // )}
           />
           <button
             onClick={form.handleSubmit(
