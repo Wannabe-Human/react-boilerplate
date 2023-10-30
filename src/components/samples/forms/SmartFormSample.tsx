@@ -25,13 +25,9 @@ const formSchema = z.object({
   //     '휴대폰 번호 형식이 아닙니다.',
   //   ),
   isCheck: z
-    .preprocess(
-      // default 값의 0 허용을 위한 전처리
-      // (form 의 default 는 0으로 인식되지만, 어차피 출력할 때, boolean 이 1, 0 으로 변환되므로 무시하자)
-      (init) => (typeof init == 'boolean' ? init : init == 1),
-      z.boolean().transform((val) => (val ? 1 : 0)), // 결과 형식을 1 or 0으로 변환
-    )
-    .default(0),
+    .boolean()
+    .transform((val) => (val ? 1 : 0)) // 결과 형식을 1 or 0으로 변환),
+    .default(false),
   // email: z.optional(z.string().email('이메일 형식이 아닙니다.')),
   description: z.string().optional(),
   // firstname: z.string().min(2, 'error on firstname'),
