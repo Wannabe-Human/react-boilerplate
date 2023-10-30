@@ -49,6 +49,7 @@ export const GlobalAlertDialogProvider = ({
 
   useEffect(() => {
     if (state.isOpen) setState({ ...state, isOpen: false });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const timerModule = useCallback(
