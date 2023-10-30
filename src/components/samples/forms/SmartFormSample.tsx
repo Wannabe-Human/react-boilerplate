@@ -16,6 +16,8 @@ import {
 } from '@components/form/parts';
 import { ComponentExplainCard } from '@components/view/ComponentExplainCard';
 
+import { apiBoolean } from '@utils/zod';
+
 const formSchema = z.object({
   name: z.string().min(1, '이름은 필수값입니다.'),
   // phone: z
@@ -24,10 +26,7 @@ const formSchema = z.object({
   //     /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
   //     '휴대폰 번호 형식이 아닙니다.',
   //   ),
-  isCheck: z
-    .boolean()
-    .transform((val) => (val ? 1 : 0)) // 결과 형식을 1 or 0으로 변환),
-    .default(false),
+  isCheck: apiBoolean.default(1),
   // email: z.optional(z.string().email('이메일 형식이 아닙니다.')),
   description: z.string().optional(),
   // firstname: z.string().min(2, 'error on firstname'),
