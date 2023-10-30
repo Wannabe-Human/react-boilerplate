@@ -1,10 +1,9 @@
 import { DevTool } from '@hookform/devtools';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
 import { useZodForm } from '@hooks/useZodForm';
 
+import { CheckboxField } from '@components/field/CheckboxField';
 import { InputField } from '@components/field/InputField';
 import { TextareaField } from '@components/field/TextAreaField';
 import {
@@ -17,8 +16,6 @@ import {
 } from '@components/form/parts';
 import { ComponentExplainCard } from '@components/view/ComponentExplainCard';
 
-import { CheckboxField } from '../../field/CheckboxField';
-
 const formSchema = z.object({
   name: z.string().min(1, '이름은 필수값입니다.'),
   // phone: z
@@ -29,7 +26,8 @@ const formSchema = z.object({
   //   ),
   isCheck: z
     .preprocess(
-      // default 값의 0 허용을 위한 전처리 (but form 의 default 는 0으로 인식됨)
+      // default 값의 0 허용을 위한 전처리
+      // (form 의 default 는 0으로 인식되지만, 어차피 출력할 때, boolean 이 1, 0 으로 변환되므로 무시하자)
       (init) => (typeof init == 'boolean' ? init : init == 1),
       z.boolean().transform((val) => (val ? 1 : 0)), // 결과 형식을 1 or 0으로 변환
     )
