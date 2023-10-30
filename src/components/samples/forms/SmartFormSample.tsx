@@ -7,10 +7,12 @@ import { CheckboxField } from '@components/field/CheckboxField';
 import { InputField } from '@components/field/InputField';
 import { RadioGroupField } from '@components/field/RadioGroupField';
 import { RadioItemField } from '@components/field/RadioItemField';
+import { SwitchField } from '@components/field/SwitchField';
 import { TextareaField } from '@components/field/TextAreaField';
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -21,7 +23,7 @@ import { ComponentExplainCard } from '@components/view/ComponentExplainCard';
 import { apiBoolean } from '@utils/zod';
 
 const formSchema = z.object({
-  name: z.string().min(1, '이름은 필수값입니다.'),
+  name: z.string().optional(),
   // phone: z
   //   .string()
   //   .regex(
@@ -29,9 +31,10 @@ const formSchema = z.object({
   //     '휴대폰 번호 형식이 아닙니다.',
   //   ),
   isCheck: apiBoolean(1),
+  isSwitch: apiBoolean(1),
   // email: z.optional(z.string().email('이메일 형식이 아닙니다.')),
   description: z.string().optional(),
-  hiList: z.enum(['all', 'hello', 'hi', 'hey']),
+  hiList: z.enum(['all', 'hello', 'hi', 'hey']).default('all'),
   // lastname: z
   //   .string()
   //   .transform((val) => val.length)
@@ -181,19 +184,28 @@ export const SmartFormSample = () => {
                 <FormMessage />
               </FormItem>
             )}
-            //   <FormItem className='flex flex-col items-center md:flex-row'>
-            //     <FormControl>
-            //       <CheckboxField
-            //         checked={field.value}
-            //         onCheckedChange={field.onChange}
-            //       />
-            //     </FormControl>
-            //     <FormLabel className='pt-2text-md flex w-32 cursor-pointer items-start justify-start md:text-lg'>
-            //       체크박스
-            //     </FormLabel>
-            //     <FormMessage className='p-2 text-xs' />
-            //   </FormItem>
-            // )}
+          />
+          <FormField
+            control={form.control}
+            name='isSwitch'
+            render={({ field }) => (
+              <FormItem className='flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm'>
+                <div className='space-y-0.5'>
+                  <FormLabel>스위치 테스트</FormLabel>
+                  <FormDescription>
+                    예시로 만든 스위치 버튼입니다. 한번 클릭해보세요.
+                  </FormDescription>
+                </div>
+                <FormControl>
+                  <SwitchField
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                    // disabled
+                    // aria-readonly
+                  />
+                </FormControl>
+              </FormItem>
+            )}
           />
           <button
             onClick={form.handleSubmit(
