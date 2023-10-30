@@ -1,4 +1,5 @@
 import { DevTool } from '@hookform/devtools';
+import { Link } from 'react-router-dom';
 import * as z from 'zod';
 
 import { useZodForm } from '@hooks/useZodForm';
@@ -18,9 +19,18 @@ import {
   FormLabel,
   FormMessage,
 } from '@components/form/parts';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@components/select/parts';
 import { ComponentExplainCard } from '@components/view/ComponentExplainCard';
 
 import { apiBoolean } from '@utils/zod';
+
+import { BasicSelect } from '../../select/BasicSelect';
 
 const formSchema = z.object({
   name: z.string().optional(),
@@ -32,7 +42,7 @@ const formSchema = z.object({
   //   ),
   isCheck: apiBoolean(1),
   isSwitch: apiBoolean(1),
-  // email: z.optional(z.string().email('이메일 형식이 아닙니다.')),
+  selectEmail: z.optional(z.string().email('이메일 형식이 아닙니다.')),
   description: z.string().optional(),
   hiList: z.enum(['all', 'hello', 'hi', 'hey']).default('all'),
   // lastname: z
@@ -204,6 +214,37 @@ export const SmartFormSample = () => {
                     // aria-readonly
                   />
                 </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='selectEmail'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <BasicSelect
+                  isFormControl
+                  placeholder='Select a verified email to display'
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  itemList={[
+                    {
+                      value: 'm@example.com',
+                    },
+                    {
+                      value: 'm@google.com',
+                    },
+                    {
+                      value: 'm@support.com',
+                    },
+                  ]}
+                />
+                <FormDescription>
+                  You can manage email addresses in your
+                  <Link to='/examples/forms'>email settings</Link>.
+                </FormDescription>
+                <FormMessage />
               </FormItem>
             )}
           />
