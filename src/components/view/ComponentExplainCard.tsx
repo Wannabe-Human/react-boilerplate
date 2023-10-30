@@ -1,18 +1,18 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode, useState } from 'react';
 
 import { Slot } from '@radix-ui/react-slot';
 import { VariantProps, cva } from 'class-variance-authority';
 
 import { CSSVariables, cn } from '@utils/tailwind';
 
-const CardVariants = cva('flex h-fit w-full', {
+const CardVariants = cva('flex h-fit w-full py-6', {
   variants: {
     variant: {
       default: 'flex-wrap container [&_.explain-area]:w-full',
     },
     componentArea: {
       'center-padding':
-        '[&_.preview]:p-7 [&_.preview]:justify-center [&_.preview]:items-center [&_.preview]:border-[var(--border-color-gray)] [&_.preview]:shadow-sm',
+        '[&_.preview]:p-7 [&_.preview]:pt-3 [&_.preview]:justify-center [&_.preview]:items-center [&_.preview]:border-[var(--border-color-gray)] [&_.preview]:shadow-sm',
     },
   },
   defaultVariants: {
@@ -26,6 +26,7 @@ export interface ComponentExplainCardProps
     VariantProps<typeof CardVariants> {
   title: string;
   description: string | ReactNode;
+  isExampleOpen?: boolean;
 }
 
 export const ComponentExplainCard = ({
@@ -33,10 +34,12 @@ export const ComponentExplainCard = ({
   description,
   variant,
   componentArea,
+  isExampleOpen = false,
   className,
   children,
   ...props
 }: ComponentExplainCardProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(isExampleOpen);
   const DescriptionEl = typeof description == 'string' ? 'p' : Slot;
   return (
     <section
@@ -61,9 +64,27 @@ export const ComponentExplainCard = ({
       </div>
       {/* 컨트롤 패널 */}
       {/* 실제 컴포넌트가 들어가는 영역 */}
-      <div className='preview mt-4 flex min-h-[180px] w-full overflow-hidden rounded-md border'>
-        {children}
-      </div>
+      {isOpen && (
+        <div className='preview mt-8 flex min-h-[180px] w-full flex-col overflow-hidden rounded-md border'>
+          <p
+            className='item mb-6 cursor-pointer self-start justify-self-start font-medium text-red-300 underline-offset-4 hover:text-red-600 hover:underline'
+            onClick={() => setIsOpen(false)}
+          >
+            예제 닫기
+          </p>
+          {children}
+        </div>
+      )}
+      {!isOpen && (
+        <div className='preview-control mt-8 flex h-fit w-full overflow-hidden rounded-md border px-7 py-3'>
+          <p
+            className='cursor-pointer font-medium text-blue-300 underline-offset-4 hover:text-blue-600 hover:underline'
+            onClick={() => setIsOpen(true)}
+          >
+            예제 펼치기...
+          </p>
+        </div>
+      )}
     </section>
   );
 };
