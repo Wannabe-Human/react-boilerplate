@@ -19,57 +19,21 @@ import {
   FormLabel,
   FormMessage,
 } from '@components/form/parts';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@components/select/parts';
 import { ComponentExplainCard } from '@components/view/ComponentExplainCard';
 
 import { apiBoolean } from '@utils/zod';
 
+import { DatePickerField } from '../../field/DatePickerField';
 import { BasicSelect } from '../../select/BasicSelect';
 
 const formSchema = z.object({
   name: z.string().optional(),
-  // phone: z
-  //   .string()
-  //   .regex(
-  //     /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
-  //     '휴대폰 번호 형식이 아닙니다.',
-  //   ),
+  dob: z.date(),
   isCheck: apiBoolean(1),
   isSwitch: apiBoolean(1),
   selectEmail: z.optional(z.string().email('이메일 형식이 아닙니다.')),
   description: z.string().optional(),
   hiList: z.enum(['all', 'hello', 'hi', 'hey']).default('all'),
-  // lastname: z
-  //   .string()
-  //   .transform((val) => val.length)
-  //   .pipe(z.number().min(5)),
-  // age: z.number(),
-  // address: z.object({
-  //   address1: z.string().nonempty(),
-  //   address2: z.string().nonempty(),
-  //   country: z.string().nonempty(),
-  //   insideobj: z.object({
-  //     id: z.string(),
-  //     insideobj: z.object({
-  //       id: z.string(),
-  //     }),
-  //   }),
-  //   code: z.array(
-  //     z.object({
-  //       id: z.string(),
-  //       somevalue: z.number().nonpositive(),
-  //       insideobj: z.object({
-  //         id: z.string(),
-  //       }),
-  //     }),
-  //   ),
-  // }),
 });
 
 export const SmartFormSample = () => {
@@ -248,6 +212,23 @@ export const SmartFormSample = () => {
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name='dob'
+            render={({ field }) => (
+              <FormItem className='flex flex-col'>
+                <FormLabel>Date of birth</FormLabel>
+                <FormControl>
+                  <DatePickerField mode='single' field={field} />
+                </FormControl>
+                <FormDescription>
+                  Your date of birth is used to calculate your age.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <button
             onClick={form.handleSubmit(
               (data) => {
